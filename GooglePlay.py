@@ -3,10 +3,14 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import time
 
-# Install lattest Chrome driver:
-# https://sites.google.com/a/chromium.org/chromedriver/downloads
+# local path 
 path = '/Users/charlie/Desktop/GooglePlay/' 
+
+# Install latest Chrome driver:
+# https://sites.google.com/a/chromium.org/chromedriver/downloads
 driver = webdriver.Chrome(path+'chromedriver')
+
+# Page url
 driver.get('https://play.google.com/store/apps/collection/cluster?clp=wgYpCiUKH2NvbS5iaXRzbWVkaWEuYW5kcm9pZC5tdXNsaW1wcm8QARgDGAE%3D%3AS%3AANO1ljL05bg')
 
 # crawl until the end page
@@ -19,9 +23,6 @@ while(match==False):
 	if lastCount==lenOfPage:
 		match=True
 
-#for i in range(3):
-#	driver.execute_script("window.scrollTo(0,document.body.scrollHeight)")  
-#	time.sleep(3)
 
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 domain = 'https://play.google.com'
